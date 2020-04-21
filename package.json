@@ -1,0 +1,16 @@
+{
+  "name": "zonejs-multiple-event-listeners",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server ./public",
+    "startWithPython": "cd public && python2 -m SimpleHTTPServer 8080"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.12.1"
+  }
+}

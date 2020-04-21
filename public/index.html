@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        On this page I used next code:
+        <pre>
+    &#60;div&#62;
+        &#60;button id="withoutZone"&#62;3 handlers without Zonejs&#60;/button&#62;
+        &#60;button id="withZone"&#62;3 handlers with Zonejs&#60;/button&#62;
+    &#60;/div&#62;
+
+    &#60;script&#62;
+        withoutZone.addEventListener('click', () =&#62; {
+            console.error('[without Zone]: handler 1.');
+            throw new Error('Error from first handler without Zonejs');
+        });
+        withoutZone.addEventListener('click', () =&#62; {
+            console.error('[without Zone]: handler 2.');
+        });
+        withoutZone.addEventListener('click', () =&#62; {
+            console.error('[without Zone]: handler 3.');
+        });
+    &#60;/script&#62;
+
+    &#60;script type="text/javascript" src="https://unpkg.com/zone.js"&#62;&#60;/script&#62;
+    &#60;script&#62;
+        withZone.addEventListener('click', () =&#62; {
+            console.error('[with Zone]: handler 1.', Zone.current);
+            throw new Error('Error from first handler with Zonejs');
+        });
+        withZone.addEventListener('click', () =&#62; {
+            console.error('[with Zone]: handler 2.');
+        });
+        withZone.addEventListener('click', () =&#62; {
+            console.error('[with Zone]: handler 3.');
+        });
+    &#60;/script&#62;
+        </pre>
+    </div>
+
+    <div>Result buttons (look into console for logs from event handlers):</div>
+
+    <div>
+        <button id="withoutZone">3 handlers without Zonejs</button>
+        <button id="withZone">3 handlers with Zonejs</button>
+    </div>
+
+    <script>
+        withoutZone.addEventListener('click', () => {
+            console.error('[without Zone]: handler 1.');
+            throw new Error('Error from first handler without Zonejs');
+        });
+        withoutZone.addEventListener('click', () => {
+            console.error('[without Zone]: handler 2.');
+        });
+        withoutZone.addEventListener('click', () => {
+            console.error('[without Zone]: handler 3.');
+        });
+    </script>
+    <script type="text/javascript" src="https://unpkg.com/zone.js"></script>
+    <script>
+        withZone.addEventListener('click', () => {
+            console.error('[with Zone]: handler 1.', Zone.current);
+            throw new Error('Error from first handler with Zonejs');
+        });
+        withZone.addEventListener('click', () => {
+            console.error('[with Zone]: handler 2.');
+        });
+        withZone.addEventListener('click', () => {
+            console.error('[with Zone]: handler 3.');
+        });
+    </script>
+</body>
+</html>
